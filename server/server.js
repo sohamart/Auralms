@@ -76,10 +76,16 @@ app.use(cookieParser());
 
 // API Health Check
 app.get('/api/health', (req, res) => {
+  const mongoose = require('mongoose');
   res.status(200).json({
     status: 'ok',
     timestamp: new Date().toISOString(),
     service: 'AuraLMS Secure API',
+    database: {
+      connected: mongoose.connection.readyState === 1,
+      host: mongoose.connection.host || 'disconnected',
+      dbName: mongoose.connection.name || 'none',
+    },
   });
 });
 
