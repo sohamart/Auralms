@@ -89,6 +89,19 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Ensure DB connection for serverless/cold-start invocations
+app.use(async (req, res, next) => {
+  const mongoose = require('mongoose');
+  if (mongoose.connection.readyState !== 1) {
+    try {
+      await connectDB();
+    } catch (err) {
+      console.error('[DB Middleware] Connection failed:', err.message);
+    }
+  }
+  next();
+});
+
 // API Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/courses', require('./routes/courseRoutes'));
