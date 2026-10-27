@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface-base: #f8fafc;
+  --surface-raised: #ffffff;
+  --surface-overlay: #ffffff;
+  --surface-sunken: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-focus: #4f46e5;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--surface-base);
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* Safe area support for iOS home indicator */
+.safe-area-pb {
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Hide scrollbar for native horizontal scrolling chips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Headings and reading ergonomics */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Tabular digits for timers, counts, percentages */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tactile button press feedback */
+.pressable {
+  transition: transform 150ms cubic-bezier(0.2, 0, 0, 1), background-color 150ms ease, border-color 150ms ease;
+}
+.pressable:active {
+  transform: scale(0.97);
+}
+
+/* Accessible visible focus ring */
+*:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* ============================================================ */
+/* Native App Scrollbar Removal — Fluid Scrolling Without Clutter */
+/* ============================================================ */
+*, *::before, *::after {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+}
+
+html, body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+}
+
+/* Markdown prose content styling in lesson notes (Clean light mode) */
+.prose-auralms {
+  color: #334155;
+  line-height: 1.7;
+}
+
+.prose-auralms h1,
+.prose-auralms h2,
+.prose-auralms h3 {
+  color: #0f172a;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.prose-auralms h2 {
+  font-size: 1.35rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.prose-auralms h3 {
+  font-size: 1.15rem;
+}
+
+.prose-auralms p {
+  margin-bottom: 1rem;
+}
+
+.prose-auralms ul,
+.prose-auralms ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-auralms li {
+  margin-bottom: 0.35rem;
+}
+
+.prose-auralms code {
+  font-family: 'JetBrains Mono', monospace;
+  background: #f1f5f9;
+  color: #0284c7;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+  border: 1px solid #e2e8f0;
+}
+
+.prose-auralms pre {
+  background: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+.prose-auralms pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: #f8fafc;
+}
+
+.prose-auralms blockquote {
+  border-left: 3px solid #4f46e5;
+  padding-left: 1rem;
+  color: #475569;
+  font-style: italic;
+  margin: 1rem 0;
+}

@@ -1,0 +1,36 @@
+{
+  "name": "AuraLMS — Engineering Academy",
+  "short_name": "AuraLMS",
+  "description": "Native engineering learning app with video masterclasses, architecture blueprints, and zero-trust progress tracking.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#4F46E5",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Course Catalog",
+      "short_name": "Catalog",
+      "description": "Explore all engineering masterclasses",
+      "url": "/courses",
+      "icons": [{ "src": "/icon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "My Learning",
+      "short_name": "Learning",
+      "description": "Jump back into active courses",
+      "url": "/dashboard",
+      "icons": [{ "src": "/icon.svg", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["education", "developer tools", "productivity"]
+}
