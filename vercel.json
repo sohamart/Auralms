@@ -12,28 +12,82 @@
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/:path*",
       "destination": {
         "service": "server"
       }
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/:path*",
       "destination": {
         "service": "client"
       }
     },
     {
-      "source": "/(manifest\\.json|favicon\\.ico|favicon-32x32\\.png|favicon-16x16\\.png|pwa-192x192\\.png|pwa-512x512\\.png|maskable-icon-512x512\\.png|apple-touch-icon\\.png|sw\\.js|icon\\.svg)",
+      "source": "/favicon.ico",
       "destination": {
         "service": "client"
       }
     },
     {
-      "source": "/(.*)",
+      "source": "/favicon-32x32.png",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/favicon-16x16.png",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/manifest.json",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/sw.js",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/icon.svg",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/pwa-192x192.png",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/pwa-512x512.png",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/maskable-icon-512x512.png",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "destination": {
+        "service": "client"
+      }
+    },
+    {
+      "source": "/:path*",
       "destination": {
         "service": "client",
-        "path": "/index.html"
+        "path": "/"
       }
     }
   ]
