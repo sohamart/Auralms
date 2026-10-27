@@ -61,7 +61,8 @@ export const StudentAccessPage = () => {
     setLoadingDetail(true);
 
     try {
-      const res = await adminApi.getStudentDetail(student.id);
+      const studentId = student._id || student.id;
+      const res = await adminApi.getStudentDetail(studentId);
       if (res.success) {
         setStudentAccessRecords(res.accessRecords || []);
       }
@@ -74,17 +75,18 @@ export const StudentAccessPage = () => {
 
   const handleGrantAccess = async (courseId, courseTitle) => {
     if (!selectedStudent) return;
+    const studentId = selectedStudent._id || selectedStudent.id;
     try {
       setUpdatingCourseId(courseId);
       const res = await adminApi.grantAccess({
-        studentId: selectedStudent.id,
+        studentId,
         courseId,
         notes: 'Granted via Admin Access Console',
       });
       if (res.success) {
         toast.success(`Access granted for "${courseTitle}"`);
         // Refresh details
-        const detailRes = await adminApi.getStudentDetail(selectedStudent.id);
+        const detailRes = await adminApi.getStudentDetail(studentId);
         if (detailRes.success) {
           setStudentAccessRecords(detailRes.accessRecords || []);
         }
@@ -100,16 +102,17 @@ export const StudentAccessPage = () => {
 
   const handleRevokeAccess = async (courseId, courseTitle) => {
     if (!selectedStudent) return;
+    const studentId = selectedStudent._id || selectedStudent.id;
     try {
       setUpdatingCourseId(courseId);
       const res = await adminApi.revokeAccess({
-        studentId: selectedStudent.id,
+        studentId,
         courseId,
       });
       if (res.success) {
         toast.info(`Access revoked for "${courseTitle}"`);
         // Refresh details
-        const detailRes = await adminApi.getStudentDetail(selectedStudent.id);
+        const detailRes = await adminApi.getStudentDetail(studentId);
         if (detailRes.success) {
           setStudentAccessRecords(detailRes.accessRecords || []);
         }

@@ -132,6 +132,18 @@ export const HomePage = () => {
 
           {/* Quick Learning & Telemetry Badges */}
           <div className="flex items-center gap-2.5 flex-wrap">
+            {/* Official AuraLMS Brand Emblem */}
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-2xl bg-gradient-to-r from-brand-50 to-indigo-50 border border-brand-200/80 shadow-2xs">
+              <img
+                src="/pwa-192x192.png"
+                alt="AuraLMS Logo"
+                className="w-5 h-5 rounded-md object-cover shadow-xs"
+              />
+              <span className="text-xs font-black tracking-tight text-slate-800">
+                Aura<span className="text-brand-600">LMS</span>
+              </span>
+            </div>
+
             <div className="flex items-center gap-2 px-3 py-2 rounded-2xl bg-brand-50 border border-brand-200/80 text-brand-800 text-xs font-bold shadow-xs">
               <Award className="w-4 h-4 text-brand-600" />
               <span>{totalLessonsDone} Lessons Completed</span>
@@ -154,7 +166,19 @@ export const HomePage = () => {
         {/* 2. "Continue Learning" / Active Lesson Hero Card             */}
         {/* ============================================================ */}
         {loading ? (
-          <div className="h-64 rounded-3xl bg-white border border-slate-200 shadow-xs animate-pulse" />
+          <div className="rounded-3xl bg-white border border-slate-200 p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 animate-pulse">
+            <div className="flex flex-col gap-3.5 w-full max-w-lg">
+              <div className="flex items-center gap-2">
+                <div className="w-28 h-6 rounded-full bg-slate-200" />
+                <div className="w-20 h-6 rounded-full bg-slate-100" />
+              </div>
+              <div className="w-3/4 h-8 rounded-xl bg-slate-200" />
+              <div className="w-full h-4 rounded-lg bg-slate-100" />
+              <div className="w-2/3 h-4 rounded-lg bg-slate-100" />
+              <div className="w-40 h-10 rounded-xl bg-slate-200 mt-2" />
+            </div>
+            <div className="w-full md:w-72 aspect-video rounded-2xl bg-slate-200 shrink-0" />
+          </div>
         ) : studentCourses.length > 0 && activeCourse ? (
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-50/70 via-white to-indigo-50/40 text-slate-900 p-6 sm:p-8 shadow-xs border border-brand-200/90">
             {/* Ambient Backlight Glow */}
@@ -214,7 +238,7 @@ export const HomePage = () => {
               <div className="lg:col-span-4 hidden sm:block">
                 <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-md aspect-video group">
                   <img
-                    src={activeCourse.thumbnail}
+                    src={activeCourse.thumbnail || '/pwa-512x512.png'}
                     alt={activeCourse.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -228,40 +252,74 @@ export const HomePage = () => {
             </div>
           </div>
         ) : (
-          /* Empty State: Clean Fresh Database State */
-          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-xs flex flex-col items-center text-center max-w-2xl mx-auto">
-            <div className="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-600 mb-4 shadow-xs">
-              {isAdmin ? <ShieldCheck className="w-7 h-7" /> : <Lock className="w-7 h-7" />}
+          /* Branded Academy Hero Card */
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-50/90 via-white to-indigo-50/50 border border-brand-200 p-6 sm:p-10 shadow-xs flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-72 h-72 rounded-full bg-brand-200/40 blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col gap-4 text-left max-w-xl">
+              <div className="flex items-center gap-3.5">
+                <img
+                  src="/pwa-192x192.png"
+                  alt="AuraLMS Official Logo"
+                  className="w-14 h-14 rounded-2xl shadow-lg shadow-brand-500/20 border-2 border-white object-cover shrink-0"
+                />
+                <div className="flex flex-col">
+                  <span className="text-[11px] font-bold text-brand-600 uppercase tracking-widest flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Native LMS Academy</span>
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                    Aura<span className="text-brand-600">LMS</span> Workspace
+                  </h2>
+                </div>
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                {isAdmin
+                  ? 'Your academy workspace is active. Build high-retention video curricula, organize modules, and grant student enrollments from the Admin Console.'
+                  : 'Welcome to your learning portal. Access to certified courses is granted directly by academy governors upon enrollment.'}
+              </p>
+
+              <div className="flex items-center gap-3 pt-1 flex-wrap">
+                {isAdmin ? (
+                  <Link to="/admin/courses">
+                    <Button variant="primary" size="md" iconRight={ArrowRight}>
+                      Build Course Curriculum
+                    </Button>
+                  </Link>
+                ) : (
+                  <Link to="/courses">
+                    <Button variant="primary" size="md" iconRight={ArrowRight}>
+                      Explore Certified Tracks
+                    </Button>
+                  </Link>
+                )}
+                <Link to="/resources">
+                  <Button variant="secondary" size="md" icon={FolderOpen}>
+                    Resource Center
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">
-              {isAdmin
-                ? 'Welcome to Your Fresh Academy'
-                : 'Course Access Pending Administrative Grant'}
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md mb-6">
-              {isAdmin
-                ? 'Your LMS is completely fresh and clean. Use the Admin Console to build your first course curriculum, upload topics, and grant access to learners.'
-                : 'Welcome to AuraLMS. Under our zero-trust engineering policies, registration creates your student identity, and course access is granted specifically by administrators.'}
-            </p>
-            <div className="flex items-center gap-3">
-              {isAdmin ? (
-                <Link to="/admin/courses">
-                  <Button variant="primary" size="md" iconRight={ArrowRight}>
-                    Create Your First Course
-                  </Button>
-                </Link>
-              ) : (
-                <Link to="/courses">
-                  <Button variant="primary" size="md" iconRight={ArrowRight}>
-                    Explore Certified Curricula
-                  </Button>
-                </Link>
-              )}
-              <Link to="/resources">
-                <Button variant="secondary" size="md" icon={FolderOpen}>
-                  View Resources
-                </Button>
-              </Link>
+
+            {/* Right Visual Brand Badge */}
+            <div className="relative z-10 hidden sm:flex flex-col items-center justify-center p-6 rounded-3xl bg-white/80 backdrop-blur-xs border border-brand-100 shadow-sm shrink-0 min-w-[200px]">
+              <div className="relative mb-3">
+                <img
+                  src="/pwa-192x192.png"
+                  alt="AuraLMS Academy Badge"
+                  className="w-18 h-18 rounded-3xl shadow-xl shadow-brand-500/25 border-4 border-white object-cover"
+                />
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-[10px] text-white font-bold">
+                  ✓
+                </span>
+              </div>
+              <span className="text-xs font-black text-slate-900 tracking-tight">
+                Zero-Trust Protected
+              </span>
+              <span className="text-[11px] text-slate-400 font-medium">
+                Installable Native App
+              </span>
             </div>
           </div>
         )}

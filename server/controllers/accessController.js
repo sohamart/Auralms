@@ -97,11 +97,14 @@ const adminGetStudentDetail = async (req, res, next) => {
 };
 
 // @desc    Admin: Grant course access to a student
+// @desc    Admin: Grant course access to a student
 // @route   POST /api/admin/access/grant
 // @access  Private (Admin)
 const adminGrantCourseAccess = async (req, res, next) => {
   try {
-    const { studentId, courseId, expiresAt, notes } = req.body;
+    const studentId = req.body.studentId || req.body.student_id || req.body.userId || req.body.id;
+    const courseId = req.body.courseId || req.body.course_id;
+    const { expiresAt, notes } = req.body;
 
     if (!studentId || !courseId) {
       return res.status(400).json({
@@ -150,7 +153,8 @@ const adminGrantCourseAccess = async (req, res, next) => {
 // @access  Private (Admin)
 const adminRevokeCourseAccess = async (req, res, next) => {
   try {
-    const { studentId, courseId } = req.body;
+    const studentId = req.body.studentId || req.body.student_id || req.body.userId || req.body.id;
+    const courseId = req.body.courseId || req.body.course_id;
 
     if (!studentId || !courseId) {
       return res.status(400).json({
