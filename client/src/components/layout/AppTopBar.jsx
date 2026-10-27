@@ -40,9 +40,11 @@ export const AppTopBar = () => {
         {/* Mobile: App Logo; Desktop: Screen Title / Breadcrumb */}
         <div className="flex items-center gap-3">
           <div className="md:hidden flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-sm">
-              <Layers className="w-4 h-4" />
-            </div>
+            <img
+              src="/pwa-192x192.png"
+              alt="AuraLMS"
+              className="w-8 h-8 rounded-xl shadow-xs object-cover"
+            />
             <span className="text-base font-black text-slate-900 tracking-tight">
               Aura<span className="text-brand-600">LMS</span>
             </span>

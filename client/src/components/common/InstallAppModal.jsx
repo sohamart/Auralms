@@ -31,27 +31,17 @@ export const InstallAppModal = () => {
       <div className="flex flex-col gap-5">
         {/* App Emblem Header Box */}
         <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div className="w-12 h-12 rounded-xl bg-brand-600 flex items-center justify-center text-white shrink-0 shadow-sm">
-            <svg
-              className="w-7 h-7"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polygon points="12 2 2 7 12 12 22 7 12 2" fill="rgba(255,255,255,0.25)" />
-              <polyline points="2 17 12 22 22 17" />
-              <polyline points="2 12 12 17 22 12" />
-            </svg>
-          </div>
+          <img
+            src="/pwa-192x192.png"
+            alt="AuraLMS"
+            className="w-12 h-12 rounded-2xl shadow-sm object-cover shrink-0"
+          />
           <div className="min-w-0">
-            <h4 className="text-sm font-bold text-slate-900 leading-tight">
-              AuraLMS Web Application
+            <h4 className="text-sm font-black text-slate-900 leading-tight">
+              AuraLMS
             </h4>
             <p className="text-xs text-slate-500 mt-0.5">
-              Version 2.4.0 • Progressive Web App (PWA)
+              Native Engineering Learning App
             </p>
           </div>
         </div>

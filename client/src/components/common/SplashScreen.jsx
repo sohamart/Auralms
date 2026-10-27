@@ -67,21 +67,11 @@ export const SplashScreen = ({ isLoading = false, onComplete }) => {
               <div className="absolute -inset-4 rounded-3xl bg-brand-500/20 blur-xl animate-pulse" />
 
               {/* App Icon Squircle */}
-              <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-br from-brand-600 via-brand-500 to-indigo-700 shadow-xl flex items-center justify-center border border-white/20">
-                <svg
-                  className="w-12 h-12 text-white drop-shadow-md"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polygon points="12 2 2 7 12 12 22 7 12 2" fill="rgba(255,255,255,0.25)" />
-                  <polyline points="2 17 12 22 22 17" />
-                  <polyline points="2 12 12 17 22 12" />
-                </svg>
-              </div>
+              <img
+                src="/pwa-192x192.png"
+                alt="AuraLMS"
+                className="relative w-24 h-24 rounded-3xl shadow-xl border border-white/20 object-cover"
+              />
             </motion.div>
 
             <motion.h1

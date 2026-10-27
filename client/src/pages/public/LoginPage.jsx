@@ -60,9 +60,11 @@ export const LoginPage = () => {
       <div className="w-full max-w-md flex flex-col gap-6">
         {/* Brand App Emblem & Title */}
         <div className="text-center flex flex-col items-center gap-2">
-          <div className="w-14 h-14 rounded-3xl bg-gradient-to-tr from-brand-600 via-brand-500 to-indigo-700 flex items-center justify-center shadow-lg shadow-brand-500/20 mb-2">
-            <Layers className="w-7 h-7 text-white" strokeWidth={2.2} />
-          </div>
+          <img
+            src="/pwa-192x192.png"
+            alt="AuraLMS"
+            className="w-14 h-14 rounded-3xl shadow-lg shadow-brand-500/20 mb-2 object-cover"
+          />
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
             Sign in to AuraLMS
           </h1>

@@ -59,9 +59,11 @@ export const AppSidebar = () => {
       <div className="flex flex-col gap-5">
         {/* App Logo */}
         <Link to="/" className="flex items-center gap-3 px-2 py-1 group">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 active:scale-95 transition-transform duration-200">
-            <Layers className="w-5 h-5" strokeWidth={2.2} />
-          </div>
+          <img
+            src="/pwa-192x192.png"
+            alt="AuraLMS"
+            className="w-10 h-10 rounded-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 active:scale-95 transition-transform duration-200 object-cover"
+          />
           <div className="flex flex-col">
             <span className="text-base font-black text-slate-900 tracking-tight leading-none group-hover:text-brand-600 transition-colors">
               Aura<span className="text-brand-600">LMS</span>

@@ -1,9 +1,15 @@
 // AuraLMS Service Worker for Native App & PWA Support
-const CACHE_NAME = 'auralms-pwa-v1';
+const CACHE_NAME = 'auralms-pwa-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/pwa-192x192.png',
+  '/pwa-512x512.png',
+  '/maskable-icon-512x512.png',
+  '/apple-touch-icon.png',
+  '/favicon-32x32.png',
+  '/favicon.ico',
   '/icon.svg'
 ];
 
