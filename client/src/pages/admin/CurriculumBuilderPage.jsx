@@ -574,6 +574,10 @@ export const CurriculumBuilderPage = () => {
                           ? 'https://www.youtube.com/watch?v=...'
                           : lessonForm.videoType === 'vimeo'
                           ? 'https://vimeo.com/12345678'
+                          : lessonForm.videoType === 'wistia'
+                          ? 'https://fast.wistia.net/embed/iframe/...'
+                          : lessonForm.videoType === 'drive'
+                          ? 'https://drive.google.com/file/d/.../view'
                           : 'https://...'
                       }
                       value={lessonForm.videoUrl}

@@ -6,28 +6,50 @@
 
 const extractYouTubeId = (url) => {
   if (!url) return null;
-  const match = url.match(
-    /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/
+  const clean = url.trim();
+  const match = clean.match(
+    /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/|live\/))([\w-]{11})/i
   );
-  return match ? match[1] : null;
+  if (match) return match[1];
+  if (/^[a-zA-Z0-9_-]{11}$/.test(clean)) return clean;
+  return null;
 };
 
 const extractVimeoId = (url) => {
   if (!url) return null;
-  const match = url.match(/(?:vimeo\.com\/)(?:channels\/(?:\w+\/)?|groups\/[^\/]*\/videos\/|album\/(?:\d+\/)?video\/|video\/|)(\d+)/);
-  return match ? match[1] : null;
+  const clean = url.trim();
+  const match = clean.match(/(?:vimeo\.com\/)(?:channels\/(?:\w+\/)?|groups\/[^\/]*\/videos\/|album\/(?:\d+\/)?video\/|video\/|)(\d+)/i);
+  if (match) return match[1];
+  if (/^\d{6,12}$/.test(clean)) return clean;
+  return null;
 };
 
 const extractWistiaId = (url) => {
   if (!url) return null;
-  const match = url.match(/(?:wistia\.com\/(?:medias|embed)\/|wi\.st\/)([\w-]+)/);
-  return match ? match[1] : null;
+  const clean = url.trim();
+  // Match fast.wistia.net/embed/iframe/{id}, wistia.com/medias/{id}, fast.wistia.com/embed/iframe/{id}, wi.st/{id}
+  const match = clean.match(
+    /(?:(?:fast\.)?wistia\.(?:net|com)\/(?:embed\/iframe\/|embed\/playlists\/|embed\/|medias\/)|wi\.st\/)([\w-]+)/i
+  );
+  if (match) return match[1];
+
+  // Match raw Wistia alphanumeric ID
+  if (/^[a-zA-Z0-9_-]{8,15}$/.test(clean)) {
+    return clean;
+  }
+
+  // Fallback: any wistia URL ending in an ID
+  const fallback = clean.match(/(?:wistia\.(?:net|com).*\/)([\w-]+)(?:\?.*)?$/i);
+  return fallback ? fallback[1] : null;
 };
 
 const extractGoogleDriveId = (url) => {
   if (!url) return null;
-  const match = url.match(/(?:drive\.google\.com\/(?:file\/d\/|open\?id=))([a-zA-Z0-9_-]+)/);
-  return match ? match[1] : null;
+  const clean = url.trim();
+  const match = clean.match(/(?:drive\.google\.com\/(?:file\/d\/|open\?id=))([a-zA-Z0-9_-]+)/i);
+  if (match) return match[1];
+  if (/^[a-zA-Z0-9_-]{20,}$/.test(clean)) return clean;
+  return null;
 };
 
 const validateAndFormatVideo = (url, type) => {
