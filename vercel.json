@@ -3,7 +3,14 @@
   "services": {
     "client": {
       "root": "client",
-      "framework": "vite"
+      "framework": "vite",
+      "outputDirectory": "dist",
+      "rewrites": [
+        {
+          "source": "/(.*)",
+          "destination": "/index.html"
+        }
+      ]
     },
     "server": {
       "root": "server",
@@ -12,82 +19,15 @@
   },
   "rewrites": [
     {
-      "source": "/api/:path*",
+      "source": "/api/(.*)",
       "destination": {
         "service": "server"
       }
     },
     {
-      "source": "/assets/:path*",
+      "source": "/(.*)",
       "destination": {
         "service": "client"
-      }
-    },
-    {
-      "source": "/favicon.ico",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/favicon-32x32.png",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/favicon-16x16.png",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/manifest.json",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/sw.js",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/icon.svg",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/pwa-192x192.png",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/pwa-512x512.png",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/maskable-icon-512x512.png",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/apple-touch-icon.png",
-      "destination": {
-        "service": "client"
-      }
-    },
-    {
-      "source": "/:path*",
-      "destination": {
-        "service": "client",
-        "path": "/"
       }
     }
   ]
